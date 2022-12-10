@@ -6,7 +6,8 @@ const Pet = require("../models/Pet.model");
 const User = require("../models/User.model");
 
 //  POST /api/pets  -  Creates a new pet
-router.post("/pets", (req, res, next) => {
+router.post("/pets/add", (req, res, next) => {
+  console.log(req.body)
     const {
         name,
         typeOfPet,
@@ -35,7 +36,7 @@ router.post("/pets", (req, res, next) => {
         vetZip,
         additionalVetInfo,
         photo,
-        owner,
+        owner
       } = req.body;
 
   Pet.create({
@@ -66,15 +67,20 @@ router.post("/pets", (req, res, next) => {
         vetZip,
         additionalVetInfo,
         photo,
-        owner: userId,
+        owner
     })
     .then((newPet) => {
-      return User.findByIdAndUpdate(userId, {
+      console.log(newPet)
+      return User.findByIdAndUpdate(owner, {
         $push: { pets: newPet._id },
       });
     })
     .then((response) => res.json(response))
-    .catch((err) => res.json(err));
+    .catch((err) => {
+      console.log(err)
+      res.json(err)
+    })
+    
 });
 
 //  GET /api/pets/:petId  - Retrieves a specific pet by id

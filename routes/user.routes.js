@@ -17,7 +17,6 @@ router.get("/users", (req, res, next) => {
 //  GET /api/users/:userId -  Retrieves a specific user by id
 router.get("/users/:userId", (req, res, next) => {
   const { userId } = req.params;
-  console.log(userId)
 
   if (!mongoose.Types.ObjectId.isValid(userId)) {
     res.status(400).json({ message: "Specified id is not valid" });

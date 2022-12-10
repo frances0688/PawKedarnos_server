@@ -48,7 +48,7 @@ const petSchema = new Schema
         medication: String,
         otherCareInfo: String,
         vetName: String,
-        vetNumber: Number,
+        vetNumber: String,
         vetStreet: String,
         vetCity: String,
         vetState: String,
@@ -59,10 +59,10 @@ const petSchema = new Schema
             type: Boolean,
             default: true,
         },
-        owner: {
-            type: String,
-            required: true
-        }
+        owner: [{
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        }]
 });
 
 const Pet = model("Pet", petSchema);
