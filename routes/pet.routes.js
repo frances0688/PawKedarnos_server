@@ -10,6 +10,7 @@ router.post("/pets/add", (req, res, next) => {
   console.log(req.body)
     const {
         name,
+        imgPath,
         typeOfPet,
         weight,
         ageYears,
@@ -41,6 +42,7 @@ router.post("/pets/add", (req, res, next) => {
 
   Pet.create({
         name,
+        imgPath,
         typeOfPet,
         weight,
         ageYears,
