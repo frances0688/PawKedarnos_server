@@ -62,7 +62,11 @@ const petSchema = new Schema
             type: Schema.Types.ObjectId,
             ref: 'User'
         }]
-});
+    },
+    {
+    // this second object adds extra properties: `createdAt` and `updatedAt`
+        timestamps: true,
+    });
 
 const Pet = model("Pet", petSchema);
 

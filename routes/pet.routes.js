@@ -5,7 +5,14 @@ const mongoose = require("mongoose");
 const Pet = require("../models/Pet.model");
 const User = require("../models/User.model");
 
-//  POST /api/pets  -  Creates a new pet
+// GET /api/pets -Retrieves all pets
+router.get("/pets", (req, res, next) => {
+  Pet.find()
+    .then((allPets) => res.json(allPets))
+    .catch((err) => res.json(err));
+});
+
+//  POST /api/pets/add  -  Creates a new pet
 router.post("/pets/add", (req, res, next) => {
   console.log(req.body)
     const {

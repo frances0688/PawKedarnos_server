@@ -16,12 +16,16 @@ const requestSchema = new Schema
         }],
         startDateTime: Date,    
         endDateTime: Date,
-        isDeclined: [{
+        isDeclined: {
             type: Boolean,
             default: false,
-        }]
+        }
         
-});
+    },
+    {
+    // this second object adds extra properties: `createdAt` and `updatedAt`
+        timestamps: true,
+    });
 
 const Request = model("Request", requestSchema);
 

@@ -43,6 +43,14 @@ const userSchema = new Schema(
     pets: [{
       type: Schema.Types.ObjectId,
       ref: 'Pet'
+    }],
+    request: [{
+      type: Schema.Types.ObjectId,
+      ref: 'Request'
+    }],
+    booking: [{
+      type: Schema.Types.ObjectId,
+      ref: 'Booking'
     }]
   },
   {

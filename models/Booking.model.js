@@ -14,9 +14,17 @@ const bookingSchema = new Schema
             type: Schema.Types.ObjectId,
             ref: 'Pet'
         }],
+        request: [{
+            type: Schema.Types.ObjectId,
+            ref: 'Request'
+        }],
         startDateTime: Date,    
         endDateTime: Date        
-});
+    },
+    {
+    // this second object adds extra properties: `createdAt` and `updatedAt`
+        timestamps: true,
+    });
 
 const Booking = model("Booking", bookingSchema);
 
