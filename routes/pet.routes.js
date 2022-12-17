@@ -80,9 +80,10 @@ router.post("/pets/add", (req, res, next) => {
     })
     .then((newPet) => {
       console.log(newPet)
-      return User.findByIdAndUpdate(owner, {
+      User.findByIdAndUpdate(owner, {
         $push: { pets: newPet._id },
       });
+      return newPet
     })
     .then((response) => res.json(response))
     .catch((err) => {
